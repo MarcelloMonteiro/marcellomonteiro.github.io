@@ -1,0 +1,247 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('/assets/fundo.jpg');
+  background-size: cover;
+  background-attachment: fixed; /* Fixa a imagem de fundo */
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #3d3d3d;
+  font-family: 'Georgia', serif;
+  padding: 20px;
+}
+
+  
+.content {
+  max-width: 600px;
+  background: #fffaf0;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Limita a altura máxima do conteúdo */
+  overflow-y: auto; /* Garante que a rolagem seja apenas no conteúdo */
+  max-height: 80vh; /* Ajuste para manter a barra de rolagem visível */
+}
+  
+  h3 {
+    font-size: 24px;
+    color: #8a4b3a;
+    margin-top: 20px;
+  }
+  
+  p {
+    line-height: 1.6;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .next-button, .finish-button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #bc6c25; /* Tom de terracota escuro */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .next-button:hover, .finish-button:hover {
+    background-color: #8a4b3a;
+  }
+  select, input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    background-color: #bc6c25;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .payment-step .pix-payment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.pix-code-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.pix-code {
+    font-family: monospace;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+}
+
+.send-receipt {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #006aff;
+}
+
+.next-button,
+.finish-button {
+    margin-top: 20px;
+}
+.name-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o input e o botão */
+}
+
+.name-input-container input {
+    flex-grow: 1; /* Faz o input ocupar o máximo de espaço disponível */
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.start-button {
+    padding: 10px 20px;
+    background-color: #bc6c25;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.start-button:hover {
+    background-color: #8a4b3a;
+}
+
+img {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.button-container {
+  display: grid;
+  gap: 10px; /* Espaçamento entre os botões */
+  align-items: center;
+}
+
+.send-receipt {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #25D366; /* Cor de fundo verde do WhatsApp */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.send-receipt:hover {
+  background-color: #20b358; /* Cor de fundo um pouco mais escura ao passar o mouse */
+}
+
+/* Estilo para navegadores baseados em WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Largura da barra de rolagem vertical */
+  height: 10px; /* Altura da barra de rolagem horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor do trilho da barra de rolagem */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bc6c25; /* Cor da barra de rolagem */
+  border-radius: 5px;
+  border: 2px solid #f1f1f1; /* Pequena borda ao redor para dar um efeito de espaçamento */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #8a4b3a; /* Cor ao passar o mouse */
+}
+
+/* Estilos para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #bc6c25 #f1f1f1; /* Cor da barra de rolagem e do trilho */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .home-container {
+        padding: 10px;
+    }
+
+  
+
+    h1, h3, p {
+        font-size: 1.1em;
+        margin: 10px 0;
+    }
+
+    .name-input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .name-input-container input {
+        width: 100%;
+        max-width: 250px;
+        padding: 8px;
+    }
+
+    .start-button {
+        width: 100%;
+        max-width: 150px;
+        padding: 8px;
+    }
+
+    .payment-step .gift-options label {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .payment-summary {
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    .pix-payment img {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .button-container button,
+    .button-container a {
+        width: 100%;
+        max-width: 200px;
+        padding: 8px;
+    }
+}

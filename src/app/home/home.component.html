@@ -1,0 +1,154 @@
+<div class="home-container">
+    <div class="content">
+        <!-- Etapa de boas-vindas -->
+        <div *ngIf="welcomeStep" >
+            <h1>Bem-vindo!</h1>
+            <p>É uma grande honra contar com a sua presença neste momento tão especial para nós.</p>
+            <p>Por favor, informe seu nome para iniciar:</p>
+            <div class="name-input-container">
+                <input type="text" [(ngModel)]="userName" placeholder="Seu nome" (input)="checkName()" />
+                <button class="start-button" [disabled]="!userName" (click)="startSteps()">Iniciar</button>
+            </div>
+        </div>
+
+        <!-- Steps normais do convite -->
+        <div *ngIf="!welcomeStep">
+            <div *ngIf="currentStep === 1">
+                <p>
+                  Como vocês já sabem, no dia 20 de dezembro de 2024, nos unirmos em matrimônio e como, para nós, este evento é
+                  único na vida, percebemos que não poderíamos fazê-lo sem comemorá-lo. Afinal, não é verdade que poucos têm a
+                  sorte de encontrar o amor antes de perder muito de si?
+                </p>
+              </div>
+        
+              <div *ngIf="currentStep === 2">
+                <h3>Sobre o evento:</h3>
+                <p>
+                  Abaixo deixaremos orientações e informações sobre o grande dia, mas sintam-se à vontade para procurar-nos caso
+                  alguma coisa não fique clara, tá bom?
+                </p>
+                <p>
+                  Sabemos que a data está próxima, mas não precisa se preocupar com toda aquela pompa tradicional dos casamentos,
+                  pois se trata apenas de um jantar entre família e amigos mais próximos. Mas, para a alegria de todos os
+                  românticos, a cerimônia de celebração do casamento acontecerá também nesta ocasião.
+                </p>
+                <p>
+                  <strong>Data:</strong> 20.12.24<br />
+                  <strong>Local:</strong> Churrascaria Sal e Brasa<br />
+                  <strong>Hora:</strong> 20h<br />
+                  <strong>Trajes:</strong> Esporte-fino
+                </p>
+              </div>
+        
+              <div *ngIf="currentStep === 3">
+                <p>
+                  No jantar, contaremos com um rodízio de carnes, incluindo comida japonesa, massas, saladas e afins. Abaixo deixamos um campo para vocês incluirem no carrinho a opção de rodízio para cada um de vocês, inclusive o de crianças menores de 5 anos, para que possamos controlar o número de convidados presentes.
+                </p>
+                <p><strong>ADULTO:</strong> Buffet Completo - R$ 84,90</p>
+                <p><strong>CRIANÇA 6-10 ANOS:</strong> Buffet Completo - R$ 50,94</p>
+                <p><strong>CRIANÇA 0-5 ANOS:</strong> Buffet completo - R$ 0,00</p>
+        
+        
+                <p>
+                  Atenção! Estes valores não incluem bebidas e sobremesas. Ao chegarem ao local lhes serão entregues comandos individuais caso queiram pedir adicionais.
+                </p>
+              </div>
+
+              <div *ngIf="currentStep === 4">
+                <p>
+                    Antes de fechar seu carrinho e prosseguir para as orientações finais, ressaltamos que o que de fato importa para nós é a sua presença para celebrar conosco o início da nossa nova caminhada. Mas, caso você queira, oferecemos algumas sugestões de presente. Lembre-se, essa etapa é opcional!
+                </p>
+              </div>
+      
+
+            <div *ngIf="currentStep === 5" class="payment-step">
+                <h3>Pagamento</h3>
+                <p>Adicione os nomes dos convidados e selecione as opções de buffet e presente:</p>
+
+                <!-- Campos de Nome dos Convidados -->
+                <div *ngFor="let guest of guests; let i = index">
+                    <br/>
+                    <label for="guestName{{ i }}">Nome do convidado {{ i + 1 }}:</label>
+                    <input
+                        *ngIf="i === 0"
+                        type="text"
+                        [value]="userName"
+                        id="guestName{{ i }}"
+                        disabled
+                    />
+                    <input
+                        *ngIf="i !== 0"
+                        type="text"
+                        [(ngModel)]="guest.name"
+                        placeholder="Nome do convidado"
+                        id="guestName{{ i }}"
+                    />
+                    <br/>
+
+                    <!-- Seção de Buffet -->
+                    <div class="buffet-selection">
+                        <br/>
+                        <label>Buffet:</label>
+                        <select [(ngModel)]="guest.buffetType" (change)="updateTotal()">
+                            <option [value]="null">Selecione</option>
+                            <option value="adult">Adulto - R$ 84,90</option>
+                            <option value="child">Criança - R$ 50,94</option>
+                        </select>
+                    </div>
+                </div>
+                <br/>
+                <button (click)="addGuest()">Adicionar Convidado</button>
+                <br/>
+                <!-- Opções de Presente -->
+                <h4>Opções de Presente</h4>
+                <div class="gift-options">
+                    <label>
+                        <input type="radio" name="giftOption" value="houseGift" [(ngModel)]="selectedGiftOption" />
+                        Presente para Casa
+                    </label>
+                    <div *ngIf="selectedGiftOption === 'houseGift'">
+                        <select [(ngModel)]="houseGift" (change)="updateTotal()">
+                            <option [value]="null">Selecione um presente</option>
+                            <option value="50">Presente simbólico - R$ 50</option>
+                            <option value="100">Presente simbólico - R$ 100</option>
+                            <option value="150">Presente simbólico - R$ 150</option>
+                        </select>
+                    </div>
+
+                    <label>
+                        <input type="radio" name="giftOption" value="honeymoonGift" [(ngModel)]="selectedGiftOption" />
+                        Presente para Lua de Mel
+                    </label>
+                    <div *ngIf="selectedGiftOption === 'honeymoonGift'">
+                        <input type="number" placeholder="Digite o valor" [(ngModel)]="honeymoonGift" (input)="updateTotal()" />
+                    </div>
+                </div>
+
+                <!-- Total e Pagamento -->
+                <div class="payment-summary">
+                    <p><strong>Total: </strong>R$ {{ total | currency:'BRL' }}</p>
+                    <button (click)="showPixPayment = !showPixPayment">Pagar com Pix</button>
+                
+                    <div *ngIf="showPixPayment" class="pix-payment">
+                        <img src="assets/qr.png" alt="QR Code Pix" />
+                        <div class="pix-code-container">
+                            <!-- <span class="pix-code">{{ pixCode }}</span> -->
+                            <button (click)="copyPixCode()">Copiar código do QR Code</button>
+                        </div>
+                        <br/>
+                
+                        <!-- Container flex para os botões -->
+                        <div class="button-container">
+                            <button (click)="gerarPDF()">Gerar confirmação</button>
+                            <a [href]="whatsappLink" target="_blank" class="send-receipt">Enviar Comprovante via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <button class="next-button" (click)="goToNextStep()" *ngIf="currentStep < totalSteps">Próximo</button>
+            <!-- <button class="finish-button" *ngIf="currentStep === totalSteps" (click)="finishSteps()">Confirmar</button> -->
+        </div>
+    </div>
+</div>
