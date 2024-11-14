@@ -15,7 +15,7 @@
         <div *ngIf="!welcomeStep">
             <div *ngIf="currentStep === 1">
                 <p>
-                  Como vocês já sabem, no dia 20 de dezembro de 2024, nos unirmos em matrimônio e como, para nós, este evento é
+                  Como vocês já sabem, no dia 20 de dezembro de 2024, nos uniremos em matrimônio e como, para nós, este evento é
                   único na vida, percebemos que não poderíamos fazê-lo sem comemorá-lo. Afinal, não é verdade que poucos têm a
                   sorte de encontrar o amor antes de perder muito de si?
                 </p>
@@ -63,7 +63,7 @@
 
             <div *ngIf="currentStep === 5" class="payment-step">
                 <h3>Pagamento</h3>
-                <p>Adicione os nomes dos convidados e selecione as opções de buffet e presente:</p>
+                <p>Adicione os nomes dos convidados e selecione as opções de buffet e, se quiser, de presente:</p>
 
                 <!-- Campos de Nome dos Convidados -->
                 <div *ngFor="let guest of guests; let i = index">
@@ -103,7 +103,7 @@
                 <button (click)="addGuest()">Adicionar Convidado</button>
                 <br/>
                 <!-- Opções de Presente -->
-                <h4>Opções de Presente</h4>
+                <h4>Opções de Presente(OPCIONAL)</h4>
                 <div class="gift-options">
                     <label>
                         <input type="radio" name="giftOption" value="houseGift" [(ngModel)]="selectedGiftOption" />
@@ -127,7 +127,7 @@
 
                 <!-- Total e Pagamento -->
                 <div class="payment-summary">
-                    <p><strong>Total: </strong>R$ {{ total | currency:'BRL' }}</p>
+                    <p><strong>Total: </strong> {{ total | currency:'BRL' }}</p>
                     <button (click)="showPixPayment = !showPixPayment">Pagar com Pix</button>
                 
                     <div *ngIf="showPixPayment" class="pix-payment">
