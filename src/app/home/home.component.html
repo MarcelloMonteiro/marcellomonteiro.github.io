@@ -75,6 +75,7 @@
                         [value]="userName"
                         id="guestName{{ i }}"
                         disabled
+                        style="font-size: 16px;"
                     />
                     <input
                         *ngIf="i !== 0"
@@ -82,6 +83,7 @@
                         [(ngModel)]="guest.name"
                         placeholder="Nome do convidado"
                         id="guestName{{ i }}"
+                        style="font-size: 16px;"
                     />
                     <br/>
 
@@ -93,6 +95,7 @@
                             <option [value]="null">Selecione</option>
                             <option value="adult">Adulto - R$ 84,90</option>
                             <option value="child">Criança - R$ 50,94</option>
+                            <option value="child">Criança menor de 5 anos - R$ 00,00</option>
                         </select>
                     </div>
                 </div>
@@ -109,12 +112,12 @@
                     <div *ngIf="selectedGiftOption === 'houseGift'">
                         <br/>
                         <label for="houseGiftInput">Informe o valor do presente:</label>
-                        <input type="number" [(ngModel)]="houseGift" (input)="updateTotal()" id="houseGiftInput" placeholder="Digite o valor em R$">
+                        <input style="font-size: 16px;" type="number" [(ngModel)]="houseGift" (input)="updateTotal()" id="houseGiftInput" placeholder="Digite o valor em R$">
                     </div>                    
                     <br/>
                     <label>
                         <br/>
-                        <input type="radio" name="giftOption" value="honeymoonGift" [(ngModel)]="selectedGiftOption" placeholder="Digite o valor em R$"/>
+                        <input style="font-size: 16px;" type="radio" name="giftOption" value="honeymoonGift" [(ngModel)]="selectedGiftOption" placeholder="Digite o valor em R$"/>
                         Presente para Lua de Mel
                     </label>
                     <div *ngIf="selectedGiftOption === 'honeymoonGift'">
