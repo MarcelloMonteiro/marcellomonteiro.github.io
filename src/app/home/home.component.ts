@@ -34,7 +34,7 @@ export class HomeComponent {
   honeymoonGift: number = 0;
   total: number = 0;
   showPixPayment = false;
-  pixCode = '00020126360014BR.GOV.BCB.PIX0114+55989816113305204000053039865802BR5925Hannah Maressa Mendes Rei6009SAO PAULO62140510si2vFjjtJV6304EC55'; // Substitua pelo código Pix real
+  pixCode = '00020126740014br.gov.bcb.pix0125maressahannah16@gmail.com0223Casamento Hannah e Joao5204000053039865802BR5925Hannah Maressa Mendes Rei6009Sao Paulo62070503***6304A178'; // Substitua pelo código Pix real
   whatsappLink = 'https://wa.me/9870220134?text=Envio%20do%20comprovante%20de%20pagamento';
 
   data = '20/12/2024'; // Exemplo de data
